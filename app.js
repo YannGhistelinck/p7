@@ -4,6 +4,7 @@ const userRoutes = require('./routes/user');
 const bookRoutes = require('./routes/book')
 const cors = require("cors")
 const app = express();
+const path = require('path')
 
 app.use(cors())
 
@@ -23,5 +24,7 @@ app.use(express.json());
 app.use('/api/auth', userRoutes);
 
 app.use('/api/books', bookRoutes);
+
+app.use('/assets/images', express.static(path.join(__dirname, 'assets/images')))
 
 module.exports = app;
