@@ -2,10 +2,10 @@ const sharp = require('sharp')
 const fs = require('fs')
 
 module.exports = (req, res, next) => {
-    const fileToConvert = `assets/images/${req.file.filename}`
+    
 
     if(req.file && req.file.mimetype != "image/webp"){
-        
+        const fileToConvert = `assets/images/${req.file.filename}`
         sharp(`${req.file.destination}/${req.file.filename}`)
             .resize(410)
             .toFile(`${req.file.destination}/${req.file.filename.split('.')[0]}-s.webp`, (err, info) => {

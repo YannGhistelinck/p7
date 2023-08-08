@@ -5,10 +5,11 @@ const bookRoutes = require('./routes/book')
 const cors = require("cors")
 const app = express();
 const path = require('path')
+require ('dotenv').config()
 
 app.use(cors())
 
-mongoose.connect('mongodb+srv://yannghistelinck:CNGksZFvvK5Tr6AZ@cluster0.bo4hwy3.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.MDP}@cluster0.bo4hwy3.mongodb.net/?retryWrites=true&w=majority`,
 { useNewUrlParser: true,useUnifiedTopology: true }).then(() => console.log('Connexion à MongoDB réussie !')).catch(() => console.log('Connexion à MongoDB échouée !'));
 
 /*app.use((req, res, next) => {
